@@ -1,0 +1,39 @@
+{
+  "name": "tickball",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --env-file-if-exists=.env server/index.mjs",
+    "dev:web": "vite --host 0.0.0.0",
+    "build": "node --check server/database.mjs && node --check server/auth.mjs && node --check server/index.mjs && tsc -b && vite build",
+    "lint": "eslint .",
+    "start": "node --env-file-if-exists=.env server/index.mjs",
+    "vercel-build": "npm run build"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.7",
+    "@vercel/functions": "^3.9.5",
+    "@vitejs/plugin-react": "latest",
+    "cheerio": "^1.1.2",
+    "express": "^4.21.2",
+    "lucide-react": "latest",
+    "pg": "^8.23.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "concurrently": "^9.2.1",
+    "eslint": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "eslint-plugin-react-refresh": "latest",
+    "globals": "latest",
+    "typescript": "latest",
+    "typescript-eslint": "latest"
+  }
+}
